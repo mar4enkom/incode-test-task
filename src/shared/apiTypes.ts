@@ -29,19 +29,6 @@ interface Label {
     description: string;
 }
 
-interface Reactions {
-    url: string;
-    total_count: number;
-    '+1': number;
-    '-1': number;
-    laugh: number;
-    hooray: number;
-    confused: number;
-    heart: number;
-    rocket: number;
-    eyes: number;
-}
-
 interface Issue {
     url: string;
     repository_url: string;
@@ -67,11 +54,16 @@ interface Issue {
     author_association: string;
     active_lock_reason: null; // Assuming active_lock_reason can be null
     body: string;
-    reactions: Reactions;
-    timeline_url: string;
-    performed_via_github_app: null;
-    state_reason: null;
 }
 
-
 export type IssueListResponse = Issue[];
+export type RepositoryResponse = {
+    id: string;
+    name: string;
+    html_url: string;
+    stargazers_count: number;
+    owner: {
+        login: "facebook",
+        html_url: "https://github.com/facebook",
+    }
+};

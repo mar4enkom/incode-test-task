@@ -1,15 +1,15 @@
-import {BaseHttpRequestHandler} from "../shared/helpers/BaseHttpRequestHandler.ts";
-import {Endpoints} from "../shared/constants.ts";
-import {IssueList} from "../shared/types.ts";
-import {IssueListResponse} from "../shared/apiTypes.ts";
+import {BaseHttpRequestHandler} from "../../../shared/helpers/BaseHttpRequestHandler.ts";
+import {Endpoints} from "../../../shared/constants.ts";
+import {IssueListResponse} from "../../../shared/apiTypes.ts";
+import {IssueList} from "../types.ts";
 
-class IssuesApiService extends BaseHttpRequestHandler {
+class IssueApiService extends BaseHttpRequestHandler {
     async get(): Promise<IssueList> {
         const response = await this.httpGet<IssueListResponse>(Endpoints.ISSUES);
-        return this.transformGetIssues(response);
+        return this.transformIssues(response);
     }
 
-    private transformGetIssues(response: IssueListResponse): IssueList {
+    private transformIssues(response: IssueListResponse): IssueList {
         return response.map(responseItem => ({
             title: responseItem.title,
             id: responseItem.id.toString(),
@@ -21,4 +21,4 @@ class IssuesApiService extends BaseHttpRequestHandler {
     }
 }
 
-export const issuesApiService = new IssuesApiService();
+export const issuesApiService = new IssueApiService();

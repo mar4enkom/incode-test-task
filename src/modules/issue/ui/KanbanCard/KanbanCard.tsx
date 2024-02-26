@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Card } from "react-bootstrap";
-import { Issue } from "../../shared/types.ts";
 import {getDaysAgo} from "./getDaysAgo.ts";
+import {Issue} from "../../types.ts";
 
 type KanbanCardProps = Pick<Issue, "title" | "number" | "createdAt" | "createdBy" | "commentsNumber">
 

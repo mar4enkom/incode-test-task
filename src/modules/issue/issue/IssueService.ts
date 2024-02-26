@@ -1,8 +1,9 @@
 import {issuesApiService} from "../api/IssuesApiService.ts";
 import {IssueState} from "../recoil/types.ts";
-import {IssueStatus} from "../shared/types.ts";
 
-class IssuesService {
+import {IssueStatus} from "../types.ts";
+
+class IssueService {
     async get(): Promise<IssueState> {
         const issuesFromApi = await issuesApiService.get();
 
@@ -14,4 +15,4 @@ class IssuesService {
     }
 }
 
-export const issuesService = new IssuesService();
+export const issueService = new IssueService();

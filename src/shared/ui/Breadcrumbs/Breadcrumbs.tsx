@@ -1,10 +1,10 @@
 import React from 'react';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import {BreadcrumbItem} from "./BreadcrumbItem.tsx";
-import {BreadcrumbsItem} from "./types.ts";
+import {BreadcrumbsList} from "./types.ts";
 
 interface BreadcrumbsProps {
-    items: BreadcrumbsItem[];
+    items: BreadcrumbsList;
 }
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {

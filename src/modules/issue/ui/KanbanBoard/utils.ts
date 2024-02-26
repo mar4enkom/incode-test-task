@@ -1,6 +1,5 @@
 import {DropResult} from "react-beautiful-dnd";
 
-
 export function moveCard<T extends Record<string, {id: string}[]>>(prevState: T, dropResult: DropResult): T {
     const { destination, source, draggableId } = dropResult;
 
@@ -12,15 +11,15 @@ export function moveCard<T extends Record<string, {id: string}[]>>(prevState: T,
     const destinationId = destination.droppableId as keyof T;
 
     let prevStateCopy = {...prevState!};
+    const elementToInsert = prevStateCopy![sourceId]
+        .find(issueItem => issueItem.id === draggableId)!;
     prevStateCopy = {
         ...prevStateCopy!,
         [sourceId]: prevStateCopy![sourceId]
             .filter(issueItem => issueItem.id !== draggableId),
     };
 
-    const destinationColumnCopy = [...prevStateCopy![destinationId]]
-    const elementToInsert = prevStateCopy![sourceId]
-        .find(issueItem => issueItem.id === draggableId)!;
+    const destinationColumnCopy = [...prevStateCopy![destinationId]];
     destinationColumnCopy.splice(destination.index, 0, elementToInsert);
     prevStateCopy = {
         ...prevStateCopy!,

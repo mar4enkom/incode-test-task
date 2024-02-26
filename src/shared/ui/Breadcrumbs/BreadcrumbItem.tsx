@@ -10,7 +10,7 @@ export const BreadcrumbItem: React.FC<BreadcrumbsItemProps> = ({text, link, acti
     const content = active ? text : <a href={link}>{text}</a>;
 
     return (
-        <Breadcrumb.Item active={active}>
+        <Breadcrumb.Item active={active} href={link ?? "#"}>
             {content}
         </Breadcrumb.Item>
     )

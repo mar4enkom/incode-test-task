@@ -1,6 +1,6 @@
 import { useCallback, useState, FormEvent } from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
-import TextInput from "../../shared/ui/TextInput/TextInput.tsx";
+import TextInput from "../TextInput/TextInput.tsx";
 
 export const LoadIssuesForm = () => {
     const [repoUrlValue, setRepoUrlValue] = useState<string>("");

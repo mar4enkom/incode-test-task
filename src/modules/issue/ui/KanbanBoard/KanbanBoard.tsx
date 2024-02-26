@@ -3,7 +3,7 @@ import {useRecoilState} from "recoil";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 
 import KanbanColumn from "../KanbanColumn/KanbanColumn.tsx";
-import {issuesService} from "../../issues/IssuesService.ts";
+import {issueService} from "../../issue/IssueService.ts";
 import {issueListState} from "../../recoil/atoms.ts";
 import {KanbanCard} from "../KanbanCard";
 import {moveCard} from "./utils.ts";
@@ -12,7 +12,7 @@ export const KanbanBoard: React.FC = () => {
     const [issueList, setIssuesList] = useRecoilState(issueListState);
 
     useEffect(() => {
-        issuesService.get()
+        issueService.get()
             .then((res) => setIssuesList(res));
     }, [setIssuesList]);
 
