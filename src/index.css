@@ -1,0 +1,16 @@
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.kanban-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, calc(33% - 15px));
+    grid-column-gap: 30px;
+}
+
+.kanban-cards-wrapper > div > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 interface KanbanColumnProps {
     title: string;
@@ -8,7 +8,7 @@ interface KanbanColumnProps {
 
 const KanbanColumn: React.FC<KanbanColumnProps> = ({ title, children }) => {
     const cardList = React.Children.map(children, (child, index) => (
-        <Row key={index} className="mb-3">
+        <Row key={index}>
             {child}
         </Row>
     ));
@@ -16,9 +16,9 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ title, children }) => {
     return (
         <Col>
             <h3>{title}</h3>
-            <Container>
+            <div className="kanban-cards-wrapper">
                 {cardList}
-            </Container>
+            </div>
         </Col>
     );
 };
