@@ -2,15 +2,15 @@ import { useCallback, useState, FormEvent } from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import TextInput from "../TextInput/TextInput.tsx";
 import {useRecoilState} from "recoil";
-import {issueListState} from "../../../modules/issue/recoil/atoms.ts";
-import {issueController} from "../../../modules/issue/controller/IssueController.ts";
+import {kanbanState} from "../../../modules/kanban/recoil/atoms.ts";
+import {kanbanController} from "../../../modules/kanban/controller/KanbanController.ts";
 import {repositoryState} from "../../../modules/repository/recoil/atoms.ts";
 import {repositoryController} from "../../../modules/repository/controller/repositoryController.ts";
 
 export const LoadIssuesForm = () => {
     const [repoUrlValue, setRepoUrlValue] = useState<string>("");
     const [, setCurrentRepository] = useRecoilState(repositoryState);
-    const [, setIssueList] = useRecoilState(issueListState);
+    const [, setKanbanState] = useRecoilState(kanbanState);
 
     const onRepoUrlValueChange = useCallback((newValue: string) => {
         setRepoUrlValue(newValue);
@@ -19,12 +19,12 @@ export const LoadIssuesForm = () => {
     const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const newIssueList = await issueController.get(repoUrlValue);
+        const newKanbanState = await kanbanController.get(repoUrlValue);
         const newCurrentRepository = await repositoryController.get(repoUrlValue);
 
-        setIssueList(newIssueList);
+        setKanbanState(newKanbanState);
         setCurrentRepository(newCurrentRepository)
-    }, [repoUrlValue, setCurrentRepository, setIssueList]);
+    }, [repoUrlValue, setCurrentRepository, setKanbanState]);
 
     return (
         <div>

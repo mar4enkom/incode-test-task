@@ -1,14 +1,14 @@
 import {GetIssuesPayload} from "../api/types.ts";
-import {issueService} from "../issue/IssueService.ts";
+import {kanbanService} from "../kanban/KanbanService.ts";
 import {Regex} from "../../../shared/constants.ts";
 import {validateGithubRepositoryURL} from "../../../shared/utils.ts";
 
-class IssueController {
+class KanbanController {
     async get(repositoryUrl: string) {
         this.validateGetPayload(repositoryUrl);
         const payload = this.transformGetPayload(repositoryUrl);
 
-        return issueService.get(payload);
+        return kanbanService.get(payload);
     }
 
     private validateGetPayload(repositoryUrl: string): void {
@@ -24,4 +24,4 @@ class IssueController {
     }
 }
 
-export const issueController = new IssueController();
+export const kanbanController = new KanbanController();

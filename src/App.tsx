@@ -3,7 +3,7 @@ import {useRecoilValue} from "recoil";
 
 import {LoadIssuesForm} from "./shared/ui/LoadIssuesForm";
 import Breadcrumbs from "./shared/ui/Breadcrumbs/Breadcrumbs.tsx";
-import {KanbanBoard} from "./modules/issue/ui/KanbanBoard/KanbanBoard.tsx";
+import {KanbanBoard} from "./modules/kanban/ui/KanbanBoard/KanbanBoard.tsx";
 import {repositoryState} from "./modules/repository/recoil/atoms.ts";
 import {getRepositoryBreadCrumbs} from "./modules/repository/utils/getRepositoryBreadCrumbs.ts";
 

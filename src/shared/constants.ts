@@ -1,5 +1,9 @@
-import {GetIssuesPayload} from "../modules/issue/api/types.ts";
+import {GetIssuesPayload} from "../modules/kanban/api/types.ts";
 import {GetRepositoryPayload} from "../modules/repository/api/types.ts";
+
+export enum LocalStorageKeys {
+    KANBAN_CACHE = "KANBAN_CACHE"
+}
 
 export const GITHUB_API_BASE = "https://api.github.com";
 
