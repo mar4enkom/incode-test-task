@@ -1,7 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import type { InlineConfig } from 'vitest';
+import type { UserConfig } from 'vite';
+import {defineConfig} from "vite";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+type ViteConfig = UserConfig & { test: InlineConfig };
+const config: ViteConfig = {
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: "./src/test/setup.ts",
+  },
+};
+export default defineConfig(config);
