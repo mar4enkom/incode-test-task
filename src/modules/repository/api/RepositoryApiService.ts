@@ -2,10 +2,11 @@ import {BaseHttpRequestHandler} from "../../../shared/helpers/BaseHttpRequestHan
 import {RepositoryResponse} from "../../../shared/apiTypes.ts";
 import {Endpoints} from "../../../shared/constants.ts";
 import {Repository} from "../types.ts";
+import {GetRepositoryPayload} from "./types.ts";
 
 class RepositoryApiService extends BaseHttpRequestHandler {
-    async get(): Promise<Repository> {
-        const response = await this.httpGet<RepositoryResponse>(Endpoints.REPO);
+    async get(payload: GetRepositoryPayload): Promise<Repository> {
+        const response = await this.httpGet<RepositoryResponse>(Endpoints.repository(payload));
         return this.transformRepository(response)
     }
 

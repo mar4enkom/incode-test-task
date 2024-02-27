@@ -1,22 +1,30 @@
 import { useCallback, useState, FormEvent } from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import TextInput from "../TextInput/TextInput.tsx";
+import {useRecoilState} from "recoil";
+import {issueListState} from "../../../modules/issue/recoil/atoms.ts";
+import {issueController} from "../../../modules/issue/controller/IssueController.ts";
+import {repositoryState} from "../../../modules/repository/recoil/atoms.ts";
+import {repositoryController} from "../../../modules/repository/controller/repositoryController.ts";
 
 export const LoadIssuesForm = () => {
     const [repoUrlValue, setRepoUrlValue] = useState<string>("");
+    const [, setCurrentRepository] = useRecoilState(repositoryState);
+    const [, setIssueList] = useRecoilState(issueListState);
 
     const onRepoUrlValueChange = useCallback((newValue: string) => {
         setRepoUrlValue(newValue);
     }, []);
 
-    const handleLoadIssues = useCallback(() => {
-        console.log(`Loading issues for: ${repoUrlValue}`);
-    }, [repoUrlValue]);
-
-    const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        handleLoadIssues();
-    }, [handleLoadIssues]);
+
+        const newIssueList = await issueController.get(repoUrlValue);
+        const newCurrentRepository = await repositoryController.get(repoUrlValue);
+
+        setIssueList(newIssueList);
+        setCurrentRepository(newCurrentRepository)
+    }, [repoUrlValue, setCurrentRepository, setIssueList]);
 
     return (
         <div>

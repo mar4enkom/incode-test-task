@@ -1,29 +1,24 @@
-import React, {useCallback, useEffect} from "react";
+import React, {useCallback} from "react";
 import {useRecoilState} from "recoil";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 
 import KanbanColumn from "../KanbanColumn/KanbanColumn.tsx";
-import {issueService} from "../../issue/IssueService.ts";
 import {issueListState} from "../../recoil/atoms.ts";
 import {KanbanCard} from "../KanbanCard";
 import {moveCard} from "./utils.ts";
 
 export const KanbanBoard: React.FC = () => {
-    const [issueList, setIssuesList] = useRecoilState(issueListState);
-
-    useEffect(() => {
-        issueService.get()
-            .then((res) => setIssuesList(res));
-    }, [setIssuesList]);
+    const [issueList, setIssueList] = useRecoilState(issueListState);
 
     const onDragEnd = useCallback((dropResult: DropResult) => {
         if (issueList == null) return;
 
         const reorderedCardList = moveCard(issueList, dropResult);
-        setIssuesList(reorderedCardList);
-    }, [issueList, setIssuesList])
+        setIssueList(reorderedCardList);
+    }, [issueList, setIssueList])
 
     return (
+        // This piece of code looks quite terrible; I wish I had the time to refactor it
         <DragDropContext onDragEnd={onDragEnd}>
             <div className="kanban-wrapper">
                 {Object.entries(issueList ?? {}).map(([columnId, cardPropList]) => (

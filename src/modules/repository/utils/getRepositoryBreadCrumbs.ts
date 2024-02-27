@@ -1,6 +1,13 @@
 import {BreadcrumbsList} from "../../../shared/ui/Breadcrumbs/types.ts";
 import {Repository} from "../types.ts";
 
+function formatStarsNumber(numberToFormat: number): string {
+    if (numberToFormat >= 1000 && numberToFormat < 1000000) {
+        return (numberToFormat / 1000).toFixed(0) + " K";
+    }
+    return numberToFormat.toString();
+}
+
 export function getRepositoryBreadCrumbs(repositoryInfo: Repository | undefined): BreadcrumbsList {
     const breadcrumbsList: BreadcrumbsList = [];
 
@@ -17,7 +24,7 @@ export function getRepositoryBreadCrumbs(repositoryInfo: Repository | undefined)
     });
 
     breadcrumbsList.push({
-        text: `⭐ ${repositoryInfo.starsNumber}`,
+        text: `⭐ ${formatStarsNumber(repositoryInfo.starsNumber)} stars`,
     });
 
     return breadcrumbsList;

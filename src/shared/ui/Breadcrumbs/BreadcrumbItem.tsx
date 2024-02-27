@@ -7,7 +7,7 @@ interface BreadcrumbsItemProps extends BreadcrumbsItem {
 }
 
 export const BreadcrumbItem: React.FC<BreadcrumbsItemProps> = ({text, link, active}) => {
-    const content = active ? text : <a href={link}>{text}</a>;
+    const content = text;
 
     return (
         <Breadcrumb.Item active={active} href={link ?? "#"}>
