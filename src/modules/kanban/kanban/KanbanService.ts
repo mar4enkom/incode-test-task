@@ -6,7 +6,7 @@ import {GetIssuesPayload} from "../api/types.ts";
 import {kanbanCacheService} from "../cache/KanbanCacheService.ts";
 import {generateRepoKanbanId} from "../utils.ts";
 import {DropResult} from "react-beautiful-dnd";
-import {moveCard} from "../../issue/ui/KanbanBoard/utils.ts";
+import {moveCard} from "../ui/KanbanBoard/utils.ts";
 
 class KanbanService {
     async get(payload: GetIssuesPayload): Promise<KanbanState> {

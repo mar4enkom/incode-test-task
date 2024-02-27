@@ -13,7 +13,7 @@ export const KanbanBoard: React.FC = () => {
     const onDragEnd = useCallback((dropResult: DropResult) => {
         const reorderedCardList = kanbanService.handleDragEnd(currentKanban, dropResult);
         setCurrentKanban(reorderedCardList);
-    }, [currentKanban, setCurrentKanban])
+    }, [currentKanban, setCurrentKanban]);
 
     return (
         // This piece of code looks quite terrible; I wish I had the time to refactor it

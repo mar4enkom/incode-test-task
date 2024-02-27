@@ -6,6 +6,7 @@ export enum LocalStorageKeys {
 }
 
 export const GITHUB_API_BASE = "https://api.github.com";
+export const DEFAULT_REPOSITORY_URL = "https://github.com/facebook/react";
 
 export const Endpoints = {
     issues: (p: GetIssuesPayload) => `/repos/${p.repositoryOwner}/${p.repositoryName}/issues`,
@@ -13,6 +14,6 @@ export const Endpoints = {
 }
 
 export const Regex = {
-    REPOSITORY_OWNER: /https:\/\/github.com\/repos\/(.+)\/.+/,
-    REPOSITORY_NAME: /https:\/\/github.com\/repos\/.+\/(.+)/,
+    REPOSITORY_OWNER: /https:\/\/github.com\/(.+)\/.+/,
+    REPOSITORY_NAME: /https:\/\/github.com\/.+\/(.+)/,
 }
