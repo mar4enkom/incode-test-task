@@ -1,6 +1,6 @@
 import {BaseHttpRequestHandler} from "../../../shared/helpers/BaseHttpRequestHandler.ts";
 import {Endpoints} from "../../../shared/constants.ts";
-import {IssueListResponse} from "../../../shared/apiTypes.ts";
+import {IssueListResponse} from "../../../shared/types/apiTypes.ts";
 import {IssueList} from "../types.ts";
 import {GetIssuesPayload} from "./types.ts";
 

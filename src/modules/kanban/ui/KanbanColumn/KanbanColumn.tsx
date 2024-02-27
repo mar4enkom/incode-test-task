@@ -1,12 +1,13 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import {Testable} from "../../../../shared/types/types.ts";
 
-interface KanbanColumnProps {
+interface KanbanColumnProps extends Testable {
     title: string;
     children: React.ReactNode;
 }
 
-const KanbanColumn: React.FC<KanbanColumnProps> = ({ title, children }) => {
+const KanbanColumn: React.FC<KanbanColumnProps> = ({ title, testId, children }) => {
     const cardList = React.Children.map(children, (child, index) => (
         <Row key={index}>
             {child}
@@ -16,7 +17,7 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ title, children }) => {
     return (
         <Col>
             <h3>{title}</h3>
-            <div className="kanban-cards-wrapper">
+            <div className="kanban-cards-wrapper" data-testid={testId}>
                 {cardList}
             </div>
         </Col>

@@ -1,5 +1,5 @@
 import {BaseHttpRequestHandler} from "../../../shared/helpers/BaseHttpRequestHandler.ts";
-import {RepositoryResponse} from "../../../shared/apiTypes.ts";
+import {RepositoryResponse} from "../../../shared/types/apiTypes.ts";
 import {Endpoints} from "../../../shared/constants.ts";
 import {Repository} from "../types.ts";
 import {GetRepositoryPayload} from "./types.ts";
